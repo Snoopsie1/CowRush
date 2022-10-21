@@ -7,14 +7,15 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     private float _speed = 5f;
-    private float _gravity = -15f;
-    private float _jumpHeight = 3f;
+    private float _gravity = -10f;
+    private float _jumpHeight = 4f;
 
-    private float _allowJumpDistance = 1.2f;
+    public Transform groundCheck;
+    private float _groundDistance = 0.4f;
+    public LayerMask groundMask;
+    
     private Vector3 _velocity;
-
-    private bool _isGrounded = true;
-
+    private bool _isGrounded; 
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        CheckGrounded();
+        _isGrounded = Physics.CheckSphere(groundCheck.position, _groundDistance, groundMask);
         if (_isGrounded && _velocity.y < 0f)
         {
             _velocity.y = -2f;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         move = Vector3.ClampMagnitude(move, 1f);
+        
         controller.Move(move * _speed * Time.deltaTime);
         _velocity.y += _gravity * Time.deltaTime;
 
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(_velocity * Time.deltaTime);
     }
 
+    /*
     void CheckGrounded()
     {
         Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hitGround);
@@ -60,4 +63,5 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    */
 }
