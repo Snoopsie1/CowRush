@@ -22,7 +22,7 @@ public class Spawn : MonoBehaviour
     }
     private void spwanCow(){
         GameObject a = Instantiate(Cow) as GameObject;
-        a.transform.position = new Vector3(50,125);
+        a.transform.position = new Vector3(Cow.transform.position.x - 20, Cow.transform.position.y + 10, Cow.transform.position.z - 20);
     }
 
     // Update is called once per frame
