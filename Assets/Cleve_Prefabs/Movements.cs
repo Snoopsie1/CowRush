@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Movement : MonoBehaviour
+public class Movements : MonoBehaviour
 {
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     public Transform Finish;
-    private float aggroRange = 10000f;
-    private float speed =Random.Range(100f,200f);
+    private float aggroRange = 80000f;
+    private float speed = Random.Range(100f,200f);
     
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        speed = Random.Range(100,200);
+        speed = Random.Range(100, 200);
         
     }
 
