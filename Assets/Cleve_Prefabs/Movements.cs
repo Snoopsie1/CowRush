@@ -14,7 +14,7 @@ public class Movements : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        speed = Random.Range(5, 10);
+        speed = Random.Range(5, 20);
         
     }
 
