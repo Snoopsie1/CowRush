@@ -7,7 +7,8 @@ public class Spawn : MonoBehaviour
 {
   
    public GameObject Cow;
-   public float respownTime = 1.0f; 
+   public GameObject Start_Platform;
+   public float respownTime = 4.0f; 
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class Spawn : MonoBehaviour
     }
     private void spwanCow(){
         GameObject a = Instantiate(Cow) as GameObject;
-        a.transform.position = new Vector3(Cow.transform.position.x - 20, Cow.transform.position.y + 10, Cow.transform.position.z - 20);
+        a.transform.position = new Vector3(Start_Platform.transform.position.x - 20, Start_Platform.transform.position.y - 10, Start_Platform.transform.position.z - 20);
     }
 
     // Update is called once per frame
