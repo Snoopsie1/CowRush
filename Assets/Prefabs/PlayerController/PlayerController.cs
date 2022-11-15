@@ -1,47 +1,43 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly float _initialSpeed = 5f;
     public CharacterController controller;
-    private static float _initialSpeed = 5f;
-    private float _speed = _initialSpeed;
-    private float _maxSpeed = 2f;
-    private float _gravity = -30f;
-    
-    private float _jumpForce = 2f;
-    private float _jumpTime = 0.33f;
-    private float _jumpTimeCounter;
-    private bool _isJumping;
-    
-    
-    
+
+
     public Transform groundCheck;
-    private float _groundDistance = 1.11f;
     public LayerMask groundMask;
+    private readonly float _gravity = -30f;
+    private readonly float _groundDistance = 1.11f;
+    private bool _isGrounded;
 
     private bool _isJumpDown = false;
+    private bool _isJumping;
+
+    private readonly float _jumpForce = 2f;
+    private readonly float _jumpTime = 0.33f;
+    private float _jumpTimeCounter;
+    private readonly float _maxSpeed = 2f;
+    private readonly float _speed = _initialSpeed;
     private Vector3 _velocity;
-    private bool _isGrounded; 
 
-    void Start()
+    private void Start()
     {
-
     }
 
-    void Update()
+    private void Update()
     {
         _isGrounded = Physics.CheckSphere(groundCheck.position, _groundDistance, groundMask);
-        
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * (x * 2) + transform.forward * (z * 2);
+        var x = Input.GetAxis("Horizontal");
+        var z = Input.GetAxis("Vertical");
+
+        var move = transform.right * (x * 2) + transform.forward * (z * 2);
         move = Vector3.ClampMagnitude(move, _maxSpeed);
-        
+
         controller.Move(move * (_speed * Time.deltaTime));
         _velocity.y += _gravity * Time.deltaTime;
 
@@ -67,11 +63,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Jump"))
-        {
-            _isJumping = false;
-        }
-
+        if (Input.GetButtonUp("Jump")) _isJumping = false;
         controller.Move(_velocity * Time.deltaTime);
     }
 }
