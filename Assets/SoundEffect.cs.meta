@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/BeanStuff/MainMenu.cs.meta
+guid: 62395a56e3c734fe6a82787dcdcd97c2
+========
+guid: c9e867d230757554cb959607369e71c2
+>>>>>>>> clevesB:Assets/SoundEffect.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
