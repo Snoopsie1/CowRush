@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickToFloor : MonoBehaviour
+public class StickToCow : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class StickToFloor : MonoBehaviour
     {
         if (collision.transform.tag == "Cow")
         {
-            transform.parent.SetParent(collision.transform);
+            transform.SetParent(collision.transform);
         }
     }
 
@@ -29,7 +29,7 @@ public class StickToFloor : MonoBehaviour
     {
         if (collision.transform.tag == "Cow")
         {
-            transform.parent.SetParent(null);
+            transform.SetParent(null);
         }
     }
 }
