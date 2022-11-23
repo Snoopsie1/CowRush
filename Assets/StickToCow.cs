@@ -16,20 +16,4 @@ public class StickToCow : MonoBehaviour
     {
         
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Cow")
-        {
-            transform.SetParent(collision.transform);
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag == "Cow")
-        {
-            transform.SetParent(null);
-        }
-    }
 }

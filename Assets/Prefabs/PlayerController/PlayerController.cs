@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
     private static readonly float _initialSpeed = 5f;
     public CharacterController controller;
 
-
     public Transform groundCheck;
     public LayerMask groundMask;
     private readonly float _gravity = -30f;
@@ -22,11 +21,7 @@ public class PlayerController : MonoBehaviour
     private readonly float _maxSpeed = 2f;
     private readonly float _speed = _initialSpeed;
     private Vector3 _velocity;
-
-    private void Start()
-    {
-    }
-
+    
     private void Update()
     {
         _isGrounded = Physics.CheckSphere(groundCheck.position, _groundDistance, groundMask);
@@ -65,5 +60,23 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonUp("Jump")) _isJumping = false;
         controller.Move(_velocity * Time.deltaTime);
+    }
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Cow")
+        {
+            Debug.Log("Stuck to cow");
+            transform.SetParent(collision.transform);
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Cow")
+        {
+            Debug.Log("Release from cow");
+            transform.SetParent(null);
+        }
     }
 }
