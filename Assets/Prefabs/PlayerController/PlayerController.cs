@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     private static readonly float _initialSpeed = 5f;
     public CharacterController controller;
+    public GameObject Player;
 
     public Transform groundCheck;
     public LayerMask groundMask;
@@ -25,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         _isGrounded = Physics.CheckSphere(groundCheck.position, _groundDistance, groundMask);
-
 
         var x = Input.GetAxis("Horizontal");
         var z = Input.GetAxis("Vertical");
@@ -62,20 +62,18 @@ public class PlayerController : MonoBehaviour
         controller.Move(_velocity * Time.deltaTime);
     }
     
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.tag == "Cow")
+        if (other.CompareTag("Cow"))
         {
-            Debug.Log("Stuck to cow");
-            transform.SetParent(collision.transform);
+            transform.SetParent(other.transform);
         }
     }
-
-    void OnCollisionExit(Collision collision)
+    
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "Cow")
+        if (other.CompareTag("Cow"))
         {
-            Debug.Log("Release from cow");
             transform.SetParent(null);
         }
     }

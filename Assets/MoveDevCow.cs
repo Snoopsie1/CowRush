@@ -21,21 +21,21 @@ public class MoveDevCow : MonoBehaviour
         Cow.transform.position = Vector3.MoveTowards(Cow.transform.position, target, Time.deltaTime * speed);
     }
 
-    void OnCollisionEnter(Collision collision)
+    /*
+    private void OnTriggerEnter(Collider other)
     {
-        Console.WriteLine(collision.gameObject.tag);
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Hej m,or");
-            collision.transform.SetParent(transform);
+            //other.transform.SetParent(transform);
         }
     }
     
-    void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+           // other.transform.SetParent(null);
         }
     }
+    */
 }
