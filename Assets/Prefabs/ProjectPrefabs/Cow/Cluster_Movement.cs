@@ -6,7 +6,7 @@ public class Cluster_Movement : MonoBehaviour
     public Transform Finish;
     private readonly float aggroRange = 10000f;
     private NavMeshAgent navMeshAgent;
-    private float speed = Random.Range(5f, 10f);
+    private float speed;
 
     // Start is called before the first frame update
     private void Start()
