@@ -5,8 +5,7 @@ public class Spawn : MonoBehaviour
 {
     public GameObject Cow;
     public GameObject Start_Platform;
-    public float respownTime = 10.0f;
-
+    private System.Random rnd;
     // Start is called before the first frame update
     private void Start()
     {
@@ -17,13 +16,14 @@ public class Spawn : MonoBehaviour
 
         //Instantiate(Cow,randomSpawnPosition, Quaternion.identity);
         StartCoroutine(spawningCows());
+        rnd = new System.Random();
     }
 
     private void spwanCow()
     {
         var a = Instantiate(Cow);
-        a.transform.position = new Vector3(Start_Platform.transform.position.x - 20,
-            Start_Platform.transform.position.y - 19, Start_Platform.transform.position.z +8);
+        a.transform.position = new Vector3((Start_Platform.transform.position.x + 50)- rnd.Next(1,10) * 10,
+            Start_Platform.transform.position.y - 10, Start_Platform.transform.position.z - 20);
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class Spawn : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(respownTime);
+            yield return new WaitForSeconds(3f);
             spwanCow();
         }
     }
