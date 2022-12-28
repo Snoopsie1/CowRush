@@ -20,7 +20,7 @@ public class finish_script : MonoBehaviour
     {
         if (player.transform.position.z >= finish.transform.position.z)
        {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("worldSelector");
        }
     }
 }

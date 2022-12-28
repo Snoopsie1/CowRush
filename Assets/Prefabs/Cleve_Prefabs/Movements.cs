@@ -6,13 +6,16 @@ public class Movements : MonoBehaviour
     public Transform Finish;
     private readonly float aggroRange = 80000f;
     private NavMeshAgent navMeshAgent;
+    
+    public GameObject Cow;
     private float speed = Random.Range(100f, 200f);
 
     // Start is called before the first frame update
     private void Start()
     {
+        Cow = GameObject.FindWithTag("Cow");
         navMeshAgent = GetComponent<NavMeshAgent>();
-        speed = Random.Range(5, 20);
+        speed = Random.Range(1, 15);
     }
 
     // Update is called once per frame

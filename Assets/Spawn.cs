@@ -22,6 +22,7 @@ public class Spawn : MonoBehaviour
     private void spwanCow()
     {
         var a = Instantiate(Cow);
+        a.transform.eulerAngles = new Vector3(0,0,0);
         a.transform.position = new Vector3((Start_Platform.transform.position.x + 50)- rnd.Next(1,10) * 10,
             Start_Platform.transform.position.y - 10, Start_Platform.transform.position.z - 20);
     }
