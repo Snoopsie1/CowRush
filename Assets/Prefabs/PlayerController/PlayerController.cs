@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundMask;
     private readonly float _gravity = -30f;
-    private readonly float _groundDistance = 1.11f;
+    private readonly float _groundDistance = 0.11f;
     private bool _isGrounded;
 
     private bool _isJumpDown = false;
@@ -26,6 +27,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         _isGrounded = Physics.CheckSphere(groundCheck.position, _groundDistance, groundMask);
+        
+        if (_isGrounded && _velocity.y < 0)
+        {
+            _velocity.y = -2f;
+        }
 
         var x = Input.GetAxis("Horizontal");
         var z = Input.GetAxis("Vertical");
@@ -35,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(move * (_speed * Time.deltaTime));
         _velocity.y += _gravity * Time.deltaTime;
+        
+        Debug.Log("yVel: " + _velocity.y);
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
