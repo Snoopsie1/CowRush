@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public GameObject Player;
 
-    private Transform platform;
+    //private Transform platform;
 
     public Transform groundCheck;
     public LayerMask groundMask;
@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(_velocity * Time.deltaTime);
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Cow"))
@@ -79,7 +80,8 @@ public class PlayerController : MonoBehaviour
             platform = other.gameObject.GetComponent<Transform>();
         }
     }
-    /*
+    */
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Cow"))
@@ -96,5 +98,4 @@ public class PlayerController : MonoBehaviour
             transform.SetParent(null);
         }
     }
-    */
 }
