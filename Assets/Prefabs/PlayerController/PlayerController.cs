@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Cow"))
         {
-            platformBody = other.gameObject.GetComponent<Transform>();
+            platform = other.gameObject.GetComponent<Transform>();
         }
     }
     /*
