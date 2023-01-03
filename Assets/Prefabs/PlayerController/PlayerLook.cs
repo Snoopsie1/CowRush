@@ -7,18 +7,16 @@ using UnityEngine;
  */
 public class PlayerLook : MonoBehaviour
 {
-    public float sensitivity = 500f;
+    public float sensitivity = 0.2f;
     public Transform playerBody;
     private float xRotation;
 
-
-    // Start is called before the first frame update
+    
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-    // Update is called once per frame
+    
     private void Update()
     {
         var mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
@@ -29,5 +27,14 @@ public class PlayerLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+    }
+
+    private Vector2 GetMouse()
+    {
+        Vector2 mouse = new Vector2(
+            Input.GetAxis("Mouse X"),
+            Input.GetAxis("Mouse Y")
+        );
+        return mouse;
     }
 }
