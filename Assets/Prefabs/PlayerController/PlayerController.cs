@@ -46,8 +46,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(move * (_speed * Time.deltaTime));
         _velocity.y += _gravity * Time.deltaTime;
         
-        Debug.Log("yVel: " + _velocity.y);
-
+        
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
             _isJumping = true;
@@ -99,23 +98,4 @@ public class PlayerController : MonoBehaviour
             platform = null;
         }
     }
-
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Cow"))
-        {
-            transform.SetParent(other.transform);
-            
-        }
-    }
-    
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Cow"))
-        {
-            transform.SetParent(null);
-        }
-    }
-    */
 }
