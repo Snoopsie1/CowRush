@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private static readonly float _initialSpeed = 5f;
     public CharacterController controller;
     public GameObject Player;
 
-    //private Transform platform;
+    private Transform platform;
+    private bool isOnPlatform;
+    private Vector3 lastPlatformPos;
 
     public Transform groundCheck;
     public LayerMask groundMask;
@@ -19,10 +20,11 @@ public class PlayerController : MonoBehaviour
     private bool _isJumpDown = false;
     private bool _isJumping;
 
-    private readonly float _jumpForce = 2f;
+    private readonly float _jumpForce = 4f;
     private readonly float _jumpTime = 0.33f;
     private float _jumpTimeCounter;
-    private readonly float _maxSpeed = 2f;
+    private readonly float _maxSpeed = 10f;
+    private static readonly float _initialSpeed = 10f;
     private readonly float _speed = _initialSpeed;
     private Vector3 _velocity;
     
@@ -70,18 +72,35 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonUp("Jump")) _isJumping = false;
         controller.Move(_velocity * Time.deltaTime);
+        
+        if (isOnPlatform)
+        {
+            Vector3 deltaPosition = platform.position - lastPlatformPos;
+            transform.position = transform.position + deltaPosition;
+            lastPlatformPos = platform.position;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Cow"))
+        {
+            platform = other.gameObject.GetComponent<Transform>();
+            lastPlatformPos = platform.position;
+            isOnPlatform = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Cow"))
+        {
+            isOnPlatform = false;
+            platform = null;
+        }
     }
 
     /*
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Cow"))
-        {
-            platform = other.gameObject.GetComponent<Transform>();
-        }
-    }
-    */
-    
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Cow"))
@@ -98,4 +117,5 @@ public class PlayerController : MonoBehaviour
             transform.SetParent(null);
         }
     }
+    */
 }
