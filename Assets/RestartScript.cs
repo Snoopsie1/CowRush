@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class RestartScript : MonoBehaviour
     {
        if (player.transform.position.y <= 7)
        {
-            player.transform.position = new Vector3(125, 31, 91);
+            player.transform.position = new Vector3(125, 36, 91);
        }
     }
 }
