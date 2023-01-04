@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public GameObject Player;
 
+    //private Transform platform;
+
     public Transform groundCheck;
     public LayerMask groundMask;
     private readonly float _gravity = -30f;
@@ -69,12 +71,23 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Jump")) _isJumping = false;
         controller.Move(_velocity * Time.deltaTime);
     }
+
+    /*
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Cow"))
+        {
+            platform = other.gameObject.GetComponent<Transform>();
+        }
+    }
+    */
     
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Cow"))
         {
             transform.SetParent(other.transform);
+            
         }
     }
     
