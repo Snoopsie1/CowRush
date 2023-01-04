@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private static readonly float _initialSpeed = 5f;
     public CharacterController controller;
     public GameObject Player;
 
@@ -21,10 +20,11 @@ public class PlayerController : MonoBehaviour
     private bool _isJumpDown = false;
     private bool _isJumping;
 
-    private readonly float _jumpForce = 2f;
+    private readonly float _jumpForce = 4f;
     private readonly float _jumpTime = 0.33f;
     private float _jumpTimeCounter;
-    private readonly float _maxSpeed = 2f;
+    private readonly float _maxSpeed = 10f;
+    private static readonly float _initialSpeed = 10f;
     private readonly float _speed = _initialSpeed;
     private Vector3 _velocity;
     
