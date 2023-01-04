@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
     private readonly float _jumpForce = 4f;
     private readonly float _jumpTime = 0.33f;
     private float _jumpTimeCounter;
-    private readonly float _maxSpeed = 10f;
-    private static readonly float _initialSpeed = 10f;
+    private readonly float _maxSpeed = 20f;
+    private static readonly float _initialSpeed = 15f;
     private readonly float _speed = _initialSpeed;
     private Vector3 _velocity;
     

@@ -36,26 +36,22 @@ public class finish_script : MonoBehaviour
             int secounds = Convert.ToInt32(words[1]);
 
             int finalTime = (miniutes * 60) + secounds;
-            Debug.Log("hej");
-            Debug.Log(finalTime);
-            Debug.Log(finalTime.GetType());
-            
+
             if (finalTime < 10)
             {
                 goldMedal.SetActive(true);
-                Debug.Log("det blev gold");
             }
             else if (finalTime >= 10 && finalTime <= 20)
             {
                 silverMedal.SetActive(true);
-                Debug.Log("det blev silver");
             }
             else if (finalTime > 20)
             {
                 bronzeMedal.SetActive(true);
-                Debug.Log("det blev bronze");
             }
 
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Time.timeScale = 0;
         }
     }
