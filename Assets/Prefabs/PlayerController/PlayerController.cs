@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(move * (_speed * Time.deltaTime));
         _velocity.y += _gravity * Time.deltaTime;
-        
-        Debug.Log("yVel: " + _velocity.y);
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
