@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class PlayerLook : MonoBehaviour
 {
-    public float sensitivity = 2.0f;
+    [SerializeField] public float sensitivity;
     public Transform playerBody;
     private float xRotation;
     private float clampedRotation;
@@ -21,8 +21,8 @@ public class PlayerLook : MonoBehaviour
     
     private void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
         xRotation -= mouseY;
         xRotation = Math.Clamp(xRotation, -90f, 90f);
